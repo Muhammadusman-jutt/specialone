@@ -1,0 +1,1662 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Surprise ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    overflow-x:hidden;
+}
+
+body{
+    font-family:Georgia,serif;
+    background:#08000f;
+    color:white;
+    min-height:100vh;
+}
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    background:
+      radial-gradient(circle at 20% 20%,#50106055,transparent 35%),
+      radial-gradient(circle at 80% 70%,#ff145533,transparent 35%),
+      linear-gradient(135deg,#05000a,#170019,#05000c);
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.15;transform:scale(.6)}
+    to{opacity:1;transform:scale(1.8)}
+}
+
+.app{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+}
+
+.screen{
+    width:min(950px,100%);
+    min-height:650px;
+    position:relative;
+    border:1px solid #ff4b9a44;
+    border-radius:35px;
+    background:#12000fbb;
+    backdrop-filter:blur(18px);
+    box-shadow:0 0 80px #ff087333;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.progress{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#ffffff10;
+    z-index:20;
+}
+
+.progressBar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff287d,#ff9ed0,#fff);
+    box-shadow:0 0 15px #ff287d;
+    transition:.7s;
+}
+
+.page{
+    display:none;
+    width:100%;
+    min-height:650px;
+    padding:55px 30px;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    animation:pageIn .8s ease;
+}
+
+.page.active{
+    display:flex;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:scale(.92) translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+h1{
+    font-size:clamp(38px,7vw,76px);
+    color:#fff;
+    text-shadow:
+      0 0 10px #ff2b8b,
+      0 0 30px #ff2b8b,
+      0 0 70px #ff2b8b;
+}
+
+h2{
+    font-size:clamp(28px,5vw,48px);
+    color:#ffb5d8;
+    margin-bottom:18px;
+}
+
+p{
+    max-width:650px;
+    font-size:18px;
+    line-height:1.8;
+    color:#ffeaf5;
+}
+
+.btn{
+    border:0;
+    margin-top:30px;
+    padding:15px 35px;
+    border-radius:50px;
+    background:linear-gradient(90deg,#ff166f,#ff55a1);
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    box-shadow:0 0 20px #ff167066;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 40px #ff1670;
+}
+
+.btn:active{
+    transform:scale(.95);
+}
+
+.bigHeart{
+    font-size:120px;
+    animation:heartbeat 1.3s infinite;
+    filter:drop-shadow(0 0 25px #ff227f);
+    margin-bottom:20px;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    25%{transform:scale(1.15)}
+    40%{transform:scale(1)}
+    60%{transform:scale(1.2)}
+}
+
+.gift{
+    width:210px;
+    height:160px;
+    position:relative;
+    margin:35px;
+    cursor:pointer;
+    animation:float 2.5s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+.giftBody{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:115px;
+    background:linear-gradient(135deg,#c50045,#ff176e);
+    border-radius:8px;
+    box-shadow:0 15px 45px #ff075977;
+}
+
+.giftLid{
+    position:absolute;
+    top:15px;
+    left:-10px;
+    width:230px;
+    height:45px;
+    background:linear-gradient(135deg,#ff226f,#ff73aa);
+    border-radius:8px;
+    z-index:3;
+}
+
+.ribbonV{
+    position:absolute;
+    left:87px;
+    bottom:0;
+    width:36px;
+    height:145px;
+    background:#ffd0e4;
+    z-index:4;
+}
+
+.ribbonH{
+    position:absolute;
+    left:0;
+    top:17px;
+    width:100%;
+    height:18px;
+    background:#ffd0e4;
+    z-index:4;
+}
+
+.bow{
+    position:absolute;
+    top:-25px;
+    left:75px;
+    width:60px;
+    height:50px;
+    z-index:5;
+}
+
+.bow:before,
+.bow:after{
+    content:"";
+    position:absolute;
+    width:48px;
+    height:35px;
+    background:#ff9fc4;
+    border-radius:50% 50% 10% 50%;
+}
+
+.bow:before{
+    transform:rotate(30deg);
+}
+
+.bow:after{
+    transform:rotate(-30deg);
+    left:25px;
+}
+
+.open .giftLid{
+    animation:lidOpen 1s forwards;
+}
+
+.open .giftBody{
+    animation:boxGlow 1s infinite alternate;
+}
+
+@keyframes lidOpen{
+    to{
+        transform:translateY(-80px) rotate(-10deg);
+    }
+}
+
+@keyframes boxGlow{
+    from{
+        box-shadow:0 15px 45px #ff075977;
+    }
+    to{
+        box-shadow:0 0 80px #ff1b88;
+    }
+}
+
+.letter{
+    max-width:650px;
+    padding:40px;
+    background:linear-gradient(135deg,#ffe9f4,#fff);
+    color:#5d1735;
+    border-radius:8px;
+    box-shadow:0 20px 60px #ff176655;
+    transform:rotate(-1deg);
+    position:relative;
+}
+
+.letter:before{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:1px solid #ff6ca433;
+    pointer-events:none;
+}
+
+.letter p{
+    color:#5d1735;
+}
+
+.rose{
+    font-size:130px;
+    animation:roseGrow 2s forwards;
+    filter:drop-shadow(0 0 30px #ff174f);
+}
+
+@keyframes roseGrow{
+    from{
+        transform:scale(0) rotate(-40deg);
+        opacity:0;
+    }
+    to{
+        transform:scale(1) rotate(0);
+        opacity:1;
+    }
+}
+
+.heartRing{
+    font-size:100px;
+    animation:ring 2s infinite;
+    text-shadow:
+      0 0 15px #ff0080,
+      0 0 40px #ff0080,
+      0 0 80px #ff0080;
+}
+
+@keyframes ring{
+    0%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+    100%{
+        transform:scale(.8);
+        opacity:.5;
+    }
+}
+
+.count{
+    display:flex;
+    gap:15px;
+    margin:30px 0;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.time{
+    width:100px;
+    padding:20px 10px;
+    border-radius:18px;
+    background:#ff277a17;
+    border:1px solid #ff4c9a55;
+    box-shadow:inset 0 0 25px #ff277a11;
+}
+
+.time strong{
+    display:block;
+    font-size:35px;
+    color:#ff6ca9;
+}
+
+.finalHeart{
+    font-size:160px;
+    animation:finalHeart 1.5s infinite;
+    filter:drop-shadow(0 0 50px #ff006f);
+}
+
+@keyframes finalHeart{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.25);
+    }
+}
+
+.floatHeart{
+    position:fixed;
+    bottom:-50px;
+    font-size:25px;
+    pointer-events:none;
+    z-index:50;
+    animation:rise linear forwards;
+}
+
+@keyframes rise{
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.petal{
+    position:fixed;
+    top:-30px;
+    font-size:20px;
+    z-index:40;
+    pointer-events:none;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:.2;
+    }
+}
+
+.spark{
+    position:fixed;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#fff;
+    pointer-events:none;
+    z-index:100;
+    animation:spark .8s forwards;
+}
+
+@keyframes spark{
+    to{
+        transform:translate(var(--x),var(--y)) scale(0);
+        opacity:0;
+    }
+}
+
+.confetti{
+    position:fixed;
+    width:10px;
+    height:18px;
+    top:-30px;
+    z-index:200;
+    animation:confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+.music{
+    position:fixed;
+    right:20px;
+    top:20px;
+    z-index:500;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:1px solid #ff76b055;
+    background:#210018dd;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+@media(max-width:600px){
+
+    .screen{
+        border-radius:20px;
+        min-height:90vh;
+    }
+
+    .page{
+        min-height:90vh;
+        padding:45px 18px;
+    }
+
+    .gift{
+        transform:scale(.8);
+    }
+
+    .letter{
+        padding:25px;
+    }
+
+    .bigHeart{
+        font-size:90px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="stars" id="stars"></div>
+
+<button class="music" onclick="toggleMusic()" id="musicBtn">🎵</button>
+
+<div class="app">
+<div class="screen">
+
+<div class="progress">
+    <div class="progressBar" id="progress"></div>
+</div>
+
+
+<!-- PAGE 0 -->
+<section class="page active">
+
+    <div class="bigHeart">❤️</div>
+
+    <h1>A Special Surprise</h1>
+
+    <p>
+        I made something special for someone special...
+        <br>
+        But there's only one way to discover it.
+    </p>
+
+    <button class="btn" onclick="next()">
+        Start The Journey ✨
+    </button>
+
+</section>
+
+
+<!-- PAGE 1 -->
+<section class="page">
+
+    <h2>🎁 Surprise Box #1</h2>
+
+    <p>
+        There is something waiting inside...
+    </p>
+
+    <div class="gift" onclick="openBox(this)">
+
+        <div class="giftLid"></div>
+        <div class="bow"></div>
+        <div class="giftBody"></div>
+        <div class="ribbonV"></div>
+        <div class="ribbonH"></div>
+
+    </div>
+
+    <button
+        class="btn"
+        id="box1"
+        onclick="next()"
+        style="display:none">
+
+        Open The Surprise 💖
+
+    </button>
+
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="page">
+
+    <h2>✨ You Found It!</h2>
+
+    <div class="letter">
+
+        <p>
+            Sometimes one person can make ordinary moments
+            feel extraordinary.
+
+            <br><br>
+
+            And somehow...
+
+            <br>
+
+            you became that person. ❤️
+        </p>
+
+    </div>
+
+    <button class="btn" onclick="next()">
+        There's More... 🌹
+    </button>
+
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="page">
+
+    <h2>🌹 Surprise Box #2</h2>
+
+    <p>
+        Tap the box and watch what happens.
+    </p>
+
+    <div class="gift" onclick="roseBox(this)">
+
+        <div class="giftLid"></div>
+        <div class="bow"></div>
+        <div class="giftBody"></div>
+        <div class="ribbonV"></div>
+        <div class="ribbonH"></div>
+
+    </div>
+
+    <div id="roseResult"></div>
+
+    <button
+        class="btn"
+        id="box2"
+        onclick="next()"
+        style="display:none">
+
+        Continue ❤️
+
+    </button>
+
+</section>
+
+
+<!-- PAGE 4 -->
+<section class="page">
+
+    <h2>💌 A Little Letter</h2>
+
+    <div class="letter">
+
+        <p id="typing"></p>
+
+    </div>
+
+    <button class="btn" onclick="next()">
+        Unlock Another 💗
+    </button>
+
+</section>
+
+
+<!-- PAGE 5 -->
+<section class="page">
+
+    <h2>💖 Surprise Box #3</h2>
+
+    <p>
+        Some things are better when they're opened slowly...
+    </p>
+
+    <div class="gift" onclick="heartBox(this)">
+
+        <div class="giftLid"></div>
+        <div class="bow"></div>
+        <div class="giftBody"></div>
+        <div class="ribbonV"></div>
+        <div class="ribbonH"></div>
+
+    </div>
+
+    <div id="heartResult"></div>
+
+    <button
+        class="btn"
+        id="box3"
+        onclick="next()"
+        style="display:none">
+
+        Next Surprise ✨
+
+    </button>
+
+</section>
+
+
+<!-- PAGE 6 -->
+<section class="page">
+
+    <h2>🌹 For You</h2>
+
+    <div class="rose">
+        🌹
+    </div>
+
+    <p>
+        If I could give you one thing,
+        I would give you the ability to see yourself
+        through my eyes.
+
+        <br><br>
+
+        Then you would finally understand
+        how special you are. ❤️
+    </p>
+
+    <button class="btn" onclick="next()">
+        Keep Going 💕
+    </button>
+
+</section>
+
+
+<!-- PAGE 7 -->
+<section class="page">
+
+    <h2>💗 The Heart</h2>
+
+    <div class="heartRing">
+        💖
+    </div>
+
+    <p>
+        Some people come into our lives
+        and leave memories.
+
+        <br>
+
+        Some leave footprints.
+
+        <br><br>
+
+        And some...
+
+        <br>
+
+        leave a piece of their heart behind.
+    </p>
+
+    <button class="btn" onclick="next()">
+        One More Box 🎁
+    </button>
+
+</section>
+
+
+<!-- PAGE 8 -->
+<section class="page">
+
+    <h2>🎁 Surprise Box #4</h2>
+
+    <p>
+        Last box before the final surprise...
+    </p>
+
+    <div class="gift" onclick="finalBox(this)">
+
+        <div class="giftLid"></div>
+        <div class="bow"></div>
+        <div class="giftBody"></div>
+        <div class="ribbonV"></div>
+        <div class="ribbonH"></div>
+
+    </div>
+
+    <div id="finalResult"></div>
+
+    <button
+        class="btn"
+        id="box4"
+        onclick="next()"
+        style="display:none">
+
+        Unlock The Final Stage 🔐
+
+    </button>
+
+</section>
+
+
+<!-- PAGE 9 -->
+<section class="page">
+
+    <h2>⏳ Wait For It...</h2>
+
+    <div class="heartRing">
+        💝
+    </div>
+
+    <p>
+        The final surprise is almost ready...
+        <br>
+        Take a deep breath.
+    </p>
+
+    <div class="count">
+
+        <div class="time">
+
+            <strong id="seconds">
+                10
+            </strong>
+
+            Seconds
+
+        </div>
+
+    </div>
+
+    <button
+        class="btn"
+        id="finalBtn"
+        onclick="next()"
+        disabled>
+
+        Unlocking... 🔒
+
+    </button>
+
+</section>
+
+
+<!-- PAGE 10 -->
+<section class="page">
+
+    <div class="finalHeart">
+        ❤️
+    </div>
+
+    <h1>
+        For You
+    </h1>
+
+    <p id="finalText">
+
+        You are one of the most beautiful parts
+        of my story.
+
+        <br><br>
+
+        Thank you for being you.
+
+        <br><br>
+
+        No matter where life takes us,
+        some people will always have
+        a special place in our hearts.
+
+    </p>
+
+    <button class="btn" onclick="fireworks()">
+        Open The Final Surprise 🎆
+    </button>
+
+</section>
+
+
+<!-- PAGE 11 -->
+<section class="page">
+
+    <div class="finalHeart">
+        💖
+    </div>
+
+    <h1>
+        Forever & Always
+    </h1>
+
+    <p>
+
+        This little website may end here...
+
+        <br><br>
+
+        but the memories,
+        smiles and beautiful moments
+        don't have to.
+
+        <br><br>
+
+        Some moments are simply
+        worth keeping forever. ❤️
+
+    </p>
+
+    <button class="btn" onclick="restart()">
+        Replay The Surprise 🔄
+    </button>
+
+</section>
+
+</div>
+</div>
+
+
+<script>
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+let current = 0;
+
+const pages =
+    document.querySelectorAll(".page");
+
+const progress =
+    document.getElementById("progress");
+
+
+function updateProgress(){
+
+    let percent =
+        (current/(pages.length-1))*100;
+
+    progress.style.width =
+        percent + "%";
+}
+
+
+function showPage(index){
+
+    pages.forEach(p =>
+        p.classList.remove("active")
+    );
+
+    current = index;
+
+    pages[current].classList.add("active");
+
+    updateProgress();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    createHearts();
+}
+
+
+function next(){
+
+    if(current < pages.length-1){
+
+        showPage(current+1);
+
+    }
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+const stars =
+    document.getElementById("stars");
+
+for(let i=0;i<130;i++){
+
+    const s =
+        document.createElement("div");
+
+    s.className = "star";
+
+    s.style.left =
+        Math.random()*100 + "%";
+
+    s.style.top =
+        Math.random()*100 + "%";
+
+    s.style.animationDelay =
+        Math.random()*3 + "s";
+
+    stars.appendChild(s);
+}
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHearts(){
+
+    for(let i=0;i<5;i++){
+
+        setTimeout(()=>{
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "floatHeart";
+
+            heart.innerHTML =
+                [
+                    "❤️",
+                    "💗",
+                    "💖",
+                    "💕",
+                    "💓"
+                ][
+                    Math.floor(
+                        Math.random()*5
+                    )
+                ];
+
+            heart.style.left =
+                Math.random()*100 + "%";
+
+            heart.style.animationDuration =
+                (4+Math.random()*4)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },8000);
+
+        },i*300);
+    }
+}
+
+
+/* =========================
+   ROSE PETALS
+========================= */
+
+function petals(){
+
+    for(let i=0;i<25;i++){
+
+        const petal =
+            document.createElement("div");
+
+        petal.className =
+            "petal";
+
+        petal.innerHTML =
+            "🌹";
+
+        petal.style.left =
+            Math.random()*100 + "%";
+
+        petal.style.animationDuration =
+            (4+Math.random()*5)+"s";
+
+        petal.style.animationDelay =
+            Math.random()*3+"s";
+
+        document.body.appendChild(petal);
+
+        setTimeout(()=>{
+            petal.remove();
+        },10000);
+    }
+}
+
+
+/* =========================
+   SPARKLES
+========================= */
+
+function sparkles(){
+
+    for(let i=0;i<50;i++){
+
+        const s =
+            document.createElement("div");
+
+        s.className =
+            "spark";
+
+        s.style.left = "50%";
+        s.style.top = "50%";
+
+        const angle =
+            Math.random()*Math.PI*2;
+
+        const distance =
+            100+Math.random()*350;
+
+        s.style.setProperty(
+            "--x",
+            Math.cos(angle)*distance+"px"
+        );
+
+        s.style.setProperty(
+            "--y",
+            Math.sin(angle)*distance+"px"
+        );
+
+        document.body.appendChild(s);
+
+        setTimeout(()=>{
+            s.remove();
+        },900);
+    }
+}
+
+
+/* =========================
+   BOX 1
+========================= */
+
+function openBox(box){
+
+    box.classList.add("open");
+
+    sparkles();
+
+    setTimeout(()=>{
+
+        document.getElementById("box1")
+            .style.display =
+            "inline-block";
+
+    },900);
+}
+
+
+/* =========================
+   BOX 2
+========================= */
+
+function roseBox(box){
+
+    box.classList.add("open");
+
+    setTimeout(()=>{
+
+        document.getElementById("roseResult")
+            .innerHTML = `
+
+                <div class="rose">
+                    🌹
+                </div>
+
+                <p>
+                    A rose for someone who makes
+                    ordinary days feel beautiful. ❤️
+                </p>
+
+            `;
+
+        petals();
+
+        sparkles();
+
+        document.getElementById("box2")
+            .style.display =
+            "inline-block";
+
+    },800);
+}
+
+
+/* =========================
+   TYPING LETTER
+========================= */
+
+const message =
+
+`Hey...
+
+I don't know if words are enough
+to explain how special you are.
+
+But I want you to know that
+your smile, your presence,
+and even the smallest moments
+can make a huge difference.
+
+Some people are simply
+worth appreciating every day.
+
+And you are one of those people. ❤️`;
+
+
+function typeWriter(){
+
+    const target =
+        document.getElementById("typing");
+
+    target.innerHTML = "";
+
+    let i = 0;
+
+    function type(){
+
+        if(i < message.length){
+
+            if(message.charAt(i) === "\n"){
+
+                target.innerHTML += "<br>";
+
+            }else{
+
+                target.innerHTML +=
+                    message.charAt(i);
+
+            }
+
+            i++;
+
+            setTimeout(type,35);
+        }
+    }
+
+    type();
+}
+
+
+/* =========================
+   BOX 3
+========================= */
+
+function heartBox(box){
+
+    box.classList.add("open");
+
+    setTimeout(()=>{
+
+        document.getElementById("heartResult")
+            .innerHTML = `
+
+                <div class="heartRing">
+                    💖
+                </div>
+
+                <p>
+                    You found my favorite surprise.
+                    <br>
+                    It's you.
+                </p>
+
+            `;
+
+        sparkles();
+
+        createHearts();
+
+        document.getElementById("box3")
+            .style.display =
+            "inline-block";
+
+    },900);
+}
+
+
+/* =========================
+   FINAL BOX
+========================= */
+
+function finalBox(box){
+
+    box.classList.add("open");
+
+    setTimeout(()=>{
+
+        document.getElementById("finalResult")
+            .innerHTML = `
+
+                <div class="heartRing">
+                    💝
+                </div>
+
+                <h2>
+                    Almost There...
+                </h2>
+
+                <p>
+                    You've unlocked every secret.
+                </p>
+
+            `;
+
+        petals();
+
+        sparkles();
+
+        document.getElementById("box4")
+            .style.display =
+            "inline-block";
+
+    },1000);
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+let countdownStarted = false;
+
+
+function startCountdown(){
+
+    if(countdownStarted)
+        return;
+
+    countdownStarted = true;
+
+    let number = 10;
+
+    const sec =
+        document.getElementById("seconds");
+
+    const btn =
+        document.getElementById("finalBtn");
+
+
+    const timer =
+        setInterval(()=>{
+
+            number--;
+
+            sec.textContent =
+                number;
+
+            createHearts();
+
+            if(number <= 0){
+
+                clearInterval(timer);
+
+                btn.disabled =
+                    false;
+
+                btn.textContent =
+                    "OPEN THE FINAL SURPRISE ❤️";
+
+                btn.style.boxShadow =
+                    "0 0 50px #ff0b78";
+            }
+
+        },1000);
+}
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+function fireworks(){
+
+    for(let burst=0;burst<12;burst++){
+
+        setTimeout(()=>{
+
+            const centerX =
+                10+Math.random()*80;
+
+            const centerY =
+                15+Math.random()*45;
+
+
+            for(let i=0;i<35;i++){
+
+                const c =
+                    document.createElement("div");
+
+                c.className =
+                    "confetti";
+
+                c.style.left =
+                    centerX+"%";
+
+                c.style.top =
+                    centerY+"%";
+
+                c.style.background =
+                    [
+                        "#ff237d",
+                        "#ff78b7",
+                        "#ffffff",
+                        "#ffd166",
+                        "#b967ff"
+                    ][
+                        Math.floor(
+                            Math.random()*5
+                        )
+                    ];
+
+
+                const angle =
+                    Math.random()*Math.PI*2;
+
+                const distance =
+                    80+Math.random()*220;
+
+
+                c.animate(
+
+                    [
+                        {
+                            transform:
+                                "translate(0,0) scale(1)",
+                            opacity:1
+                        },
+
+                        {
+                            transform:
+                                `translate(
+                                ${Math.cos(angle)*distance}px,
+                                ${Math.sin(angle)*distance}px
+                                ) scale(0)`,
+                            opacity:0
+                        }
+                    ],
+
+                    {
+                        duration:
+                            1000+Math.random()*700,
+
+                        easing:
+                            "ease-out"
+                    }
+
+                );
+
+
+                document.body.appendChild(c);
+
+                setTimeout(()=>{
+                    c.remove();
+                },2000);
+            }
+
+        },burst*350);
+    }
+
+
+    createHearts();
+
+    petals();
+
+    sparkles();
+
+
+    setTimeout(()=>{
+
+        next();
+
+    },3500);
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+let audioCtx;
+
+let musicPlaying = false;
+
+let musicTimer;
+
+
+function toggleMusic(){
+
+    const btn =
+        document.getElementById("musicBtn");
+
+
+    if(!audioCtx){
+
+        audioCtx =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+    }
+
+
+    if(!musicPlaying){
+
+        musicPlaying = true;
+
+        btn.innerHTML =
+            "🔊";
+
+        playTone();
+
+    }else{
+
+        musicPlaying = false;
+
+        btn.innerHTML =
+            "🎵";
+
+        clearTimeout(musicTimer);
+    }
+}
+
+
+function playTone(){
+
+    if(!musicPlaying)
+        return;
+
+
+    const osc =
+        audioCtx.createOscillator();
+
+    const gain =
+        audioCtx.createGain();
+
+
+    osc.frequency.value =
+        261.63;
+
+    osc.type =
+        "sine";
+
+    gain.gain.value =
+        .025;
+
+
+    osc.connect(gain);
+
+    gain.connect(
+        audioCtx.destination
+    );
+
+
+    osc.start();
+
+    osc.stop(
+        audioCtx.currentTime+1
+    );
+
+
+    musicTimer =
+        setTimeout(
+            playTone,
+            1500
+        );
+}
+
+
+/* =========================
+   RESTART
+========================= */
+
+function restart(){
+
+    current = 0;
+
+
+    document.querySelectorAll(".gift")
+        .forEach(g =>
+            g.classList.remove("open")
+        );
+
+
+    document.querySelectorAll(
+        "#box1,#box2,#box3,#box4"
+    ).forEach(b=>{
+
+        b.style.display =
+            "none";
+
+    });
+
+
+    document.getElementById(
+        "roseResult"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "heartResult"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "finalResult"
+    ).innerHTML = "";
+
+
+    countdownStarted =
+        false;
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent = "10";
+
+
+    const finalBtn =
+        document.getElementById(
+            "finalBtn"
+        );
+
+    finalBtn.disabled = true;
+
+    finalBtn.textContent =
+        "Unlocking... 🔒";
+
+
+    showPage(0);
+}
+
+
+/* =========================
+   SPECIAL PAGE EVENTS
+========================= */
+
+const originalShow =
+    showPage;
+
+
+showPage = function(index){
+
+    originalShow(index);
+
+
+    if(index === 4){
+
+        setTimeout(
+            typeWriter,
+            500
+        );
+    }
+
+
+    if(index === 9){
+
+        startCountdown();
+    }
+
+
+    if(index === 10){
+
+        createHearts();
+
+        petals();
+    }
+};
+
+
+/* =========================
+   START
+========================= */
+
+updateProgress();
+
+createHearts();
+
+
+setInterval(()=>{
+
+    if(Math.random() > .45){
+
+        createHearts();
+
+    }
+
+},4000);
+
+</script>
+
+</body>
+</html>
+```
